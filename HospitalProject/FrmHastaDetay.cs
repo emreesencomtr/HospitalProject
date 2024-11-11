@@ -76,7 +76,9 @@ namespace HospitalProject
         private void CmbDoktor_SelectedIndexChanged(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter("Select * from TblRandevular where RandevuBrans = '" + CmbBrans.Text + "' and  RandevuDoktor = '" + CmbDoktor.Text + "' and  randevuDurum = 0" ,bgl.baglanti());
+            SqlDataAdapter da = new SqlDataAdapter("select * from TblRandevular where RandevuBrans='" + CmbBrans.Text + "' and RandevuDoktor='" + CmbDoktor.Text + "' and RandevuDurum=" + 0, bgl.baglanti());
+
+            //SqlDataAdapter da = new SqlDataAdapter("select * from  TblRandevular where RandevuBransi='" + CmbBrans.Text + "' and RandevuDoktroru='" +CmbDoktor.Text + "' and RandevuDurumu='" + 0 +"'" ,bgl.baglanti());
             da.Fill(dt);
             dataGridView2.DataSource = dt;
 
@@ -105,6 +107,11 @@ namespace HospitalProject
             bgl.baglanti().Close();
             MessageBox.Show("Randevu Alındı!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Information );
 
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }
